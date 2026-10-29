@@ -47,7 +47,7 @@ Kategori Keselamatan:
 | **C1, C3** | $10\mu\text{F}$ Tantalum/C | Short Circuit | Rel daya $5\text{V}/3.3\text{V}$ terhubung singkat ke GND | Catu daya *drop* ke $0\text{V}$, TX mati total. | RX mengalami *Timeout* ($>60\text{ms}$) $\rightarrow$ E-Stop aktif. | **SF** |
 | **C1, C3** | $10\mu\text{F}$ Tantalum/C | Open Circuit | Riak tegangan (*ripple*) meningkat | Pengoperasian LDO kurang stabil, berpotensi *reset* MCU. | Terdeteksi via *Heartbeat Timeout* jika MCU *reset*. | **SF** |
 | **C2, C4** | $100\text{nF}$ Ceramic | Short Circuit | Rel daya $3.3\text{V}$ hubung singkat ke GND | Catu daya TX mati total. | RX mengalami *Timeout* ($>60\text{ms}$) $\rightarrow$ E-Stop aktif. | **SF** |
-| **D2** | 1N5819 (Diode) | Open Circuit | Jalur catu daya USB VBUS terputus | Board TX tidak mendapat daya dari USB. | RX mengalami *Timeout* ($>60\text{ms}$) $\rightarrow$ E-Stop aktif. | **SF** |
+| **D1, D2** | 1N5819 (Diode) | Open Circuit | Jalur catu daya USB VBUS terputus | Board TX tidak mendapat daya dari USB. | RX mengalami *Timeout* ($>60\text{ms}$) $\rightarrow$ E-Stop aktif. | **SF** |
 | **R1, R2** | $5.1\text{k}\Omega$ 0805 | Open / Short | Jalur CC1/CC2 USB-C tidak ternegosiasi | Pengisian/daya USB terganggu, TX tidak aktif. | RX mengalami *Timeout* ($>60\text{ms}$) $\rightarrow$ E-Stop aktif. | **SF** |
 | **R13** | $10\text{k}\Omega$ (Divider) | Open Circuit | Pembacaan ADC Baterai melayang (*floating*) | ADC membaca $0\text{V}$ (baterai dianggap habis). | *Firmware* TX mengirim indikasi *Low-Bat* $\rightarrow$ E-Stop. | **SF** |
 | **R13** | $10\text{k}\Omega$ (Divider) | Short Circuit | Tegangan baterai langsung menghantam IO7 | Potensi kerusakan pin IO7 ESP32-S3. | Terdeteksi jika MCU TX *crash* $\rightarrow$ RX *Timeout*. | **DD** |
